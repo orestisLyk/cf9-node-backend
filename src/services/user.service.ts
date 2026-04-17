@@ -5,5 +5,7 @@ import {Types} from 'mongoose';
 
 export const createUser = async(payload: IUser) => {
     console.log(payload);
-    return payload;
+    const user = new User(payload);
+    console.log("new user", user);
+    return user;
 }
