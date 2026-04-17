@@ -21,7 +21,7 @@ export interface IUser extends Document {
     phone?: IPhone[];
     roles: Types.ObjectId[];
     }
-}
+
 
 const PhoneSchema = new Schema<IPhone>({
     type:String,
