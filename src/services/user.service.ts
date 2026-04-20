@@ -8,6 +8,11 @@ import * as userDAO from '../dao/user.dao';
 
 export const SALT_ROUNDS = parseInt(process.env.SALT_ROUNDS || '10');
 
+export const findAllUsers = async () => {
+    const users = await userDAO.findAllUsers();
+    return users;
+}
+
 export const findUserByEmail = async (email: string) => {
     const user = await userDAO.findByEmail(email);
     if(user) {
@@ -39,7 +44,7 @@ export const createUser = async(payload: CreateUserDTO) => {
 
 export const updateUser = async (username: string, payload:UpdateUserDTO) => {
     const updateData: Partial<IUser> = {};
-    
+
     if(payload.firstname!= undefined) updateData.firstname = payload.firstname;
     if(payload.lastname!= undefined) updateData.lastname = payload.lastname;
     if(payload.password!= undefined) {

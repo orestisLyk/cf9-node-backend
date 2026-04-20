@@ -2,6 +2,16 @@ import {Request, Response, NextFunction } from 'express';
 import * as userService from '../services/user.service';
 import { UpdateUserDTO } from '../dto/user.dto';
 
+export const getAllUsers = async(req: Request, res: Response, next: NextFunction) => {
+    try {
+        const result = await userService.findAllUsers();
+        res.status(200).json(result);
+    } catch (error) {
+        next(error);
+
+    }
+}
+
 export const getOneByEmail = async(req: Request, res: Response, next: NextFunction) => {
     try {
         const email = req.params.email as string;

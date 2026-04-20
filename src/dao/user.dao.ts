@@ -1,5 +1,9 @@
 import User, {IUser} from '../models/user.model';
 
+export const findAllUsers = async (): Promise<IUser[]> => {
+    return await User.find().populate('roles').lean().exec();
+}
+
 export const findByEmail = async (email: string): Promise<IUser | null> => {
     return await User.findOne({ email: email }).populate('roles').lean().exec();
 }
