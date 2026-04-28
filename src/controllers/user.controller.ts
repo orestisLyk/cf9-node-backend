@@ -28,7 +28,7 @@ export const getOneByEmail = async(req: Request, res: Response, next: NextFuncti
 export const create = async(req:Request, res: Response, next: NextFunction) => {
     try {
         const user = await userService.createUser(req.body);
-        res.status(201).json(user);
+        res.status(201).json({status: true, data: user});
     } catch (error) {
         next(error);
     }

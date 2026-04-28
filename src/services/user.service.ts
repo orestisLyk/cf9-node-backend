@@ -40,6 +40,7 @@ export const createUser = async(payload: CreateUserDTO) => {
     // console.log("new user", user);
     // return user.save();
     const user = await userDAO.createUser({ ...payload, roles: roleIds });
+    return user;
 }
 
 export const updateUser = async (username: string, payload:UpdateUserDTO) => {
